@@ -14,8 +14,8 @@ class MentoringSubjectSchema extends Schema {
         .inTable("mentorings");
       table.string("subject", 254).notNullable();
       table.string("created_by", 80);
-      table.timestamps();
       table.timestamp("created_at").notNullable().defaultTo(this.fn.now());
+      table.timestamp("updated_at");
     });
   }
 

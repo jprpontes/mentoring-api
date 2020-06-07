@@ -10,8 +10,8 @@ class MentorSchema extends Schema {
       table.integer("user_id").notNullable().references("id").inTable("users");
       table.integer("status").notNullable().comment("1 = Inativo, 2 = Ativo");
       table.string("created_by", 80);
-      table.timestamps();
       table.timestamp("created_at").notNullable().defaultTo(this.fn.now());
+      table.timestamp("updated_at");
     });
   }
 
