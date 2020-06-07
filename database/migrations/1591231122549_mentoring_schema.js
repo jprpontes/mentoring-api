@@ -1,19 +1,29 @@
-'use strict'
+"use strict";
 
 /** @type {import('@adonisjs/lucid/src/Schema')} */
-const Schema = use('Schema')
+const Schema = use("Schema");
 
 class MentoringSchema extends Schema {
-  up () {
-    this.create('mentorings', (table) => {
-      table.increments()
-      table.timestamps()
-    })
+  up() {
+    this.create("mentorings", (table) => {
+      table.increments();
+      table
+        .integer("mentor_id")
+        .notNullable()
+        .references("id")
+        .inTable("mentors");
+      table.string("title", 254).notNullable();
+      table.string("description").notNullable();
+      table.integer("status").notNullable().comment("1 = Inativo, 2 = Ativo");
+      table.string("created_by", 80);
+      table.timestamps();
+      table.timestamps("created_at").notNullable().defaultTo(this.fn.now());
+    });
   }
 
-  down () {
-    this.drop('mentorings')
+  down() {
+    this.drop("mentorings");
   }
 }
 
-module.exports = MentoringSchema
+module.exports = MentoringSchema;
