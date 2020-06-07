@@ -17,7 +17,7 @@ class MentoringSchema extends Schema {
       table.integer("status").notNullable().comment("1 = Inativo, 2 = Ativo");
       table.string("created_by", 80);
       table.timestamps();
-      table.timestamps("created_at").notNullable().defaultTo(this.fn.now());
+      table.timestamp("created_at").notNullable().defaultTo(this.fn.now());
     });
   }
 
