@@ -1,8 +1,10 @@
-'use strict'
+"use strict";
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
+
+const MentorService = require("../../Services/MentorService");
 
 /**
  * Resourceful controller for interacting with mentors
@@ -17,8 +19,7 @@ class MentorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-  }
+  async index({ request, response, view }) {}
 
   /**
    * Render a form to be used for creating a new mentor.
@@ -29,8 +30,7 @@ class MentorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async create ({ request, response, view }) {
-  }
+  async create({ request, response, view }) {}
 
   /**
    * Create/save a new mentor.
@@ -40,8 +40,7 @@ class MentorController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
-  }
+  async store({ request, response }) {}
 
   /**
    * Display a single mentor.
@@ -52,7 +51,11 @@ class MentorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show({ params, request, response, view }) {
+    var mentorService = new MentorService();
+    var result = await mentorService.show({ id: params.id });
+
+    return response.json(result);
   }
 
   /**
@@ -64,8 +67,7 @@ class MentorController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async edit ({ params, request, response, view }) {
-  }
+  async edit({ params, request, response, view }) {}
 
   /**
    * Update mentor details.
@@ -75,8 +77,7 @@ class MentorController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
-  }
+  async update({ params, request, response }) {}
 
   /**
    * Delete a mentor with id.
@@ -86,8 +87,7 @@ class MentorController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async destroy ({ params, request, response }) {
-  }
+  async destroy({ params, request, response }) {}
 }
 
-module.exports = MentorController
+module.exports = MentorController;

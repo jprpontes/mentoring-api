@@ -19,3 +19,4 @@ const Route = use("Route");
 Route.get("/", () => "Mentoring");
 
 Route.get("/search/:value", "SearchController.search");
+Route.get("/mentors/:id", "MentorController.show");
