@@ -3,17 +3,13 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use("Model");
 
-class Mentoring extends Model {
+class MentorSubject extends Model {
   static get table() {
-    return "mentoring";
+    return "mentoring_subjects";
   }
 
   static get hidden() {
     return ["created_at", "created_by", "updated_at"];
-  }
-
-  subjects() {
-    return this.hasMany("App/Models/MentoringSubject", "id", "mentoring_id");
   }
 
   mentor() {
@@ -21,4 +17,4 @@ class Mentoring extends Model {
   }
 }
 
-module.exports = Mentoring;
+module.exports = MentorSubject;

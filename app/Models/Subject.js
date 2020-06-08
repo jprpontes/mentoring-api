@@ -5,7 +5,7 @@ const Model = use("Model");
 
 class Subject extends Model {
   static get table() {
-    return "mentoria.subjects";
+    return "subjects";
   }
 
   static get hidden() {
