@@ -8,7 +8,9 @@ class MentorRepository extends BaseRepository {
     var query = await Database.select(["m.id", "u.username"])
       .from("mentors as m")
       .innerJoin("users as u", "u.id", "m.user_id")
-      .where("u.username", "like", `%${value}%`);
+      .whereRaw("lower(unnacent(u.username)) like lower(unnacent(?))", [
+        `%${value}%`,
+      ]);
 
     return query;
   }
