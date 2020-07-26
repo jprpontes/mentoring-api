@@ -20,6 +20,14 @@ class Mentor extends Model {
     return this.hasMany("App/Models/MentorSubject", "id", "mentor_id");
   }
 
+  reviews() {
+    return this.hasMany("App/Models/MentorReview", "id", "mentor_id");
+  }
+
+  experiences() {
+    return this.hasMany("App/Models/MentorExperience", "id", "mentor_id");
+  }
+
   user() {
     return this.belongsTo("App/Models/User", "user_id", "id");
   }

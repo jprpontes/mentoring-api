@@ -21,3 +21,12 @@ Factory.blueprint("App/Models/Mentor", async (faker) => {
     created_by: "Factory",
   };
 });
+
+Factory.blueprint("App/Models/MentorExperience", async (faker) => {
+  return {
+    company: faker.text(),
+    occupation: faker.text(),
+    dtstart: faker.date(),
+    created_by: "Factory",
+  };
+});

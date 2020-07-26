@@ -8,6 +8,7 @@ class MentorSchema extends Schema {
     this.create("mentors", (table) => {
       table.increments();
       table.integer("user_id").notNullable().references("id").inTable("users");
+      table.string("biography", 500);
       table.integer("status").notNullable().comment("1 = Inativo, 2 = Ativo");
       table.string("created_by", 80);
       table.timestamp("created_at").notNullable().defaultTo(this.fn.now());
